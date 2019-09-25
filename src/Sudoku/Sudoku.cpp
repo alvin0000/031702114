@@ -36,11 +36,11 @@ public:
 	{
 		switch (e)
 		{
-		case 3:return i + j - 1;
+		case 3:return ( i - 1)*3 + j;
 		case 4:return (i - 1) / 2 * 2 + (j - 1) / 2 + 1;
-		case 5:return i + j - 1;
+		case 5:return (i - 1) * 5 + j;
 		case 6:return (i - 1) / 2 * 2 + (j - 1) / 3 + 1;
-		case 7:return i + j - 1;
+		case 7:return (i - 1) * 7 + j;
 		case 8:return (i - 1) / 4 * 4 + (j - 1) / 2 + 1;
 		case 9:return (i - 1) / 3 * 3 + (j - 1) / 3 + 1;
 		default: printf("阶数不符\n");
