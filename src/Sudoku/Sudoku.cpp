@@ -8,6 +8,7 @@
 #include<cstring>
 #include<fstream>
 using namespace std;
+string OUT;
 class Map {
 private:
 	int map_int[10][10];//存放九宫格 
@@ -83,18 +84,19 @@ public:
 	void Print()
 	{
 		fstream bfile;
-		bfile.open("output.txt", ios::app | ios::out);
+		bfile.open(OUT, ios::app | ios::out);
 		for (int i = 1; i <= e; i++)
-			for (int j = 1; j < e; j++)
+			for (int j = 1; j <= e; j++)
 			{
 				bfile << map_int[i][j];
 				if (j == e)
 					bfile << endl;
 				else
 					bfile << " ";
+//				printf("%d%c", map_int[i][j], j == e ? '\n' : ' ');
 			}
 		bfile << endl;
-				//printf("%d%c", map_int[i][j], j == e ? '\n' : ' ');
+				
 	}
 };
 int main(int argc,char **argv)
@@ -102,16 +104,23 @@ int main(int argc,char **argv)
 {
 	int data[10][10], m = 0, n = 0;
 	fstream afile;
-	afile.open("input.txt", ios::app |ios::in);
+	afile.open(argv[6], ios::app |ios::in);
 //	cin >> m >> n;
-	m=int(argv[2])-48;
-	n=int(argv[4])-48;
+	m=atoi(argv[2]);
+	n=atoi(argv[4]);
+//	printf("%d\n", m);
+//	printf("%d\n", n);
+	OUT = argv[8];
 	while (n--)
 	{
 		for (int i = 1; i <= m; i++)
 			for (int j = 1; j <= m; j++)
+			{
 //				cin >> data[i][j];
-				afile>>data[i][j];
+				afile >> data[i][j];
+//				printf("%d", data[i][j]);
+			}
+//		printf("\n");
 		Map Map1(data,m);
 		Map1.Record();
 		Map1.dfs(0);
